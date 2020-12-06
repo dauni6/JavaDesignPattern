@@ -4,11 +4,16 @@ import com.example.javadesignpattern.adapter.Print;
 import com.example.javadesignpattern.adapter.Print2;
 import com.example.javadesignpattern.adapter.PrintBanner;
 import com.example.javadesignpattern.adapter.PrintBanner2;
+import com.example.javadesignpattern.adapter.practice1.Provide;
+import com.example.javadesignpattern.adapter.practice1.ProvideCoffee;
 import com.example.javadesignpattern.adapter.problem.FileIO;
 import com.example.javadesignpattern.adapter.problem.FileProperties;
 import com.example.javadesignpattern.iterator.Book;
 import com.example.javadesignpattern.iterator.BookShelf;
 import com.example.javadesignpattern.iterator.Iterator;
+import com.example.javadesignpattern.template.AbstractDisplay;
+import com.example.javadesignpattern.template.CharDisplay;
+import com.example.javadesignpattern.template.StringDisplay;
 
 import org.junit.Test;
 
@@ -84,6 +89,22 @@ public class ExampleUnitTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void adapterCoffee() {
+        Provide p = new ProvideCoffee("루왁");
+        p.provideCoffee();
+    }
+
+    @Test
+    public void templateString() {
+        AbstractDisplay d1 = new CharDisplay('H');
+        AbstractDisplay d2 = new StringDisplay("Hello, world.");
+        AbstractDisplay d3 = new StringDisplay("안녕하세요.");
+        d1.display();
+        d2.display();
+        d3.display();
     }
 
 }
