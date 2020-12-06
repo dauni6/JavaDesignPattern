@@ -1,0 +1,5 @@
+#written by FileProperties
+#Sat Dec 05 19:03:43 KST 2020
+day=05
+year=2020
+month=12

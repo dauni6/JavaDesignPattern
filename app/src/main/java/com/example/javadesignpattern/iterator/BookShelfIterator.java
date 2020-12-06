@@ -29,4 +29,11 @@ public class BookShelfIterator implements Iterator {
         return book;
     }
 
+    @Override
+    public Object nextArrayList() {
+        Book book = bookShelf.getBookAtFromArrayList(index);
+        index++;
+        return book;
+    }
+
 }
