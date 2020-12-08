@@ -8,6 +8,9 @@ import com.example.javadesignpattern.adapter.practice1.Provide;
 import com.example.javadesignpattern.adapter.practice1.ProvideCoffee;
 import com.example.javadesignpattern.adapter.problem.FileIO;
 import com.example.javadesignpattern.adapter.problem.FileProperties;
+import com.example.javadesignpattern.factory.framework.Factory;
+import com.example.javadesignpattern.factory.framework.Product;
+import com.example.javadesignpattern.factory.idcard.IDCardFactory;
 import com.example.javadesignpattern.iterator.Book;
 import com.example.javadesignpattern.iterator.BookShelf;
 import com.example.javadesignpattern.iterator.Iterator;
@@ -105,6 +108,17 @@ public class ExampleUnitTest {
         d1.display();
         d2.display();
         d3.display();
+    }
+
+    @Test
+    public void factoryProduct() {
+        Factory factory = new IDCardFactory();
+        Product card1 = factory.create("홍길동");
+        Product card2 = factory.create("이순신");
+        Product card3 = factory.create("강감찬");
+        card1.use();
+        card2.use();
+        card3.use();
     }
 
 }
