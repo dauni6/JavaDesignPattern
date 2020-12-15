@@ -14,6 +14,9 @@ import com.example.javadesignpattern.factory.idcard.IDCardFactory;
 import com.example.javadesignpattern.iterator.Book;
 import com.example.javadesignpattern.iterator.BookShelf;
 import com.example.javadesignpattern.iterator.Iterator;
+import com.example.javadesignpattern.singleton.Singleton;
+import com.example.javadesignpattern.singleton.TicketMaker;
+import com.example.javadesignpattern.singleton.Triple;
 import com.example.javadesignpattern.template.AbstractDisplay;
 import com.example.javadesignpattern.template.CharDisplay;
 import com.example.javadesignpattern.template.StringDisplay;
@@ -119,6 +122,38 @@ public class ExampleUnitTest {
         card1.use();
         card2.use();
         card3.use();
+    }
+
+    @Test
+    public void singletonTest() {
+        System.out.println("Start.");
+        Singleton obj1 = Singleton.getInstance();
+        Singleton obj2 = Singleton.getInstance();
+        if(obj1 == obj2) {
+            System.out.println("둘은 동일한 인스턴스 입니다.");
+        } else {
+            System.out.println("둘은 다른 인스턴스 입니다.");
+        }
+        System.out.println("End.");
+    }
+
+    @Test
+    public void singletonTicket() {
+        TicketMaker ticketMaker = TicketMaker.getInstance();
+        int ticket1 = ticketMaker.getNextTicketNumber();
+        int ticket2 = ticketMaker.getNextTicketNumber();
+        int ticket3 = ticketMaker.getNextTicketNumber();
+        System.out.println("첫번째 티켓번호 : " + ticket1 + " 두번째 티켓번호 : " + ticket2 + " 세번째 티켓번호 : " + ticket3);
+    }
+
+    @Test
+    public void singletonTriple() {
+        System.out.println("Start.");
+        for (int i = 0; i < 9; i++) {
+            Triple triple = Triple.getInstance(i % 3);
+            System.out.println(i + " : " + triple);
+        }
+        System.out.println("End.");
     }
 
 }
