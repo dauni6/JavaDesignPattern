@@ -14,6 +14,9 @@ import com.example.javadesignpattern.factory.idcard.IDCardFactory;
 import com.example.javadesignpattern.iterator.Book;
 import com.example.javadesignpattern.iterator.BookShelf;
 import com.example.javadesignpattern.iterator.Iterator;
+import com.example.javadesignpattern.prototype.Manager;
+import com.example.javadesignpattern.prototype.MessageBox;
+import com.example.javadesignpattern.prototype.UnderlinePen;
 import com.example.javadesignpattern.singleton.Singleton;
 import com.example.javadesignpattern.singleton.TicketMaker;
 import com.example.javadesignpattern.singleton.Triple;
@@ -154,6 +157,25 @@ public class ExampleUnitTest {
             System.out.println(i + " : " + triple);
         }
         System.out.println("End.");
+    }
+
+    @Test
+    public void prototypeTest() {
+        Manager manager = new Manager();
+        UnderlinePen upen = new UnderlinePen('~');
+        MessageBox mbox = new MessageBox('*');
+        MessageBox sbox = new MessageBox('/');
+        manager.register("strong message", upen);
+        manager.register("warning box", mbox);
+        manager.register("slash box", sbox);
+
+        com.example.javadesignpattern.prototype.Product p1 = manager.create("strong message");
+        p1.use("Hello, world.");
+        com.example.javadesignpattern.prototype.Product p2 = manager.create("warning box");
+        p2.use("Hello, world.");
+        com.example.javadesignpattern.prototype.Product p3 = manager.create("slash box");
+        p3.use("Hello, world.");
+
     }
 
 }
