@@ -14,8 +14,12 @@ import com.example.javadesignpattern.factory.idcard.IDCardFactory;
 import com.example.javadesignpattern.iterator.Book;
 import com.example.javadesignpattern.iterator.BookShelf;
 import com.example.javadesignpattern.iterator.Iterator;
+import com.example.javadesignpattern.prototype.JinRamen;
 import com.example.javadesignpattern.prototype.Manager;
 import com.example.javadesignpattern.prototype.MessageBox;
+import com.example.javadesignpattern.prototype.Ramen;
+import com.example.javadesignpattern.prototype.RamenManager;
+import com.example.javadesignpattern.prototype.ShinRamen;
 import com.example.javadesignpattern.prototype.UnderlinePen;
 import com.example.javadesignpattern.singleton.Singleton;
 import com.example.javadesignpattern.singleton.TicketMaker;
@@ -37,6 +41,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
@@ -175,6 +180,24 @@ public class ExampleUnitTest {
         p2.use("Hello, world.");
         com.example.javadesignpattern.prototype.Product p3 = manager.create("slash box");
         p3.use("Hello, world.");
+    }
+
+    @Test
+    public void prototypeRamen() {
+        RamenManager manager = new RamenManager();
+        ShinRamen sramen = new ShinRamen();
+        JinRamen jramen = new JinRamen();
+        sramen.setDecoChar('@');
+        jramen.setDecoChar('*');
+
+        manager.register("shin", sramen);
+        manager.register("jin", jramen);
+
+        Ramen r1 = manager.create("shin");
+        Ramen r2 = manager.create("jin");
+
+        r1.use("매운 신라면");
+        r2.use("고소한 진라면");
 
     }
 

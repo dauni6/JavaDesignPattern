@@ -1,12 +1,10 @@
 package com.example.javadesignpattern.prototype;
 
-import android.util.Log;
-
-public class MessageBox extends Product{
+public class JinRamen implements Ramen{
 
     private char decoChar;
 
-    public MessageBox(char decoChar) {
+    public void setDecoChar(char decoChar) {
         this.decoChar = decoChar;
     }
 
@@ -24,4 +22,15 @@ public class MessageBox extends Product{
         System.out.println();
     }
 
+    @Override
+    public Ramen createClone() {
+        Ramen r = null;
+        try {
+            r = (Ramen)clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        return r;
+    }
 }
